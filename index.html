@@ -26,6 +26,23 @@
       .floating-heart {
         animation: float 4s ease-in-out infinite;
       }
+      /* Loading Spinner Styles */
+      .loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #ec4899;
+      }
+      .heart-beat {
+        font-size: 3rem;
+        animation: beat 1s infinite;
+      }
+      @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
     </style>
   <script type="importmap">
 {
@@ -38,7 +55,15 @@
 }
 </script>
 </head>
-  <body class="h-full">
-    <div id="root" class="h-full"></div>
+  <body class="h-full bg-pink-50">
+    <div id="root" class="h-full">
+      <!-- Fallback content while React loads -->
+      <div class="loader-container">
+        <div class="heart-beat">❤️</div>
+        <p class="mt-4 font-bold text-pink-600">Loading Love...</p>
+      </div>
+    </div>
+    <!-- CRITICAL: This script tag was missing. It loads the React app. -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
